@@ -3,22 +3,19 @@ import { StyleSheet, Text, View, Button } from 'react-native';
 
 export default function App() {
 
-  const [welcome, setWelcome] = useState('Welcome!')
-  const [session, setSession] = useState({number: 6, title: 'states'})
-  const [current, setCurrent] = useState(true)
+  const [increment, setIncrement] = useState(0)
+  const [count, setCount] = useState(0)
 
   const onClickHandler = () => {
-    setWelcome('Welcome back!')
-    setSession({number: 7, title: 'styles'})
-    setCurrent(false)
+    setIncrement(increment + 5)
+    setCount(count + 1)
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{welcome}</Text>
-      <Text style={styles.text}>This is section {session.number} and is about {session.title}.</Text>
-      <Text style={styles.text}>This is the {current ? 'current session.' : 'next session.'}</Text>
-      <Button title='Next Section' onPress={onClickHandler}></Button>
+      <Text style={styles.text}>{increment}</Text>
+      <Button title='Add' onPress={onClickHandler}></Button>
+      <Text style={styles.text}>You clicked {count} times.</Text>
     </View>
   );
 }
