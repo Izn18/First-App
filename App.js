@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
 
-  const [name, setName] = useState('Style Test')
-
-  const onClickHandler = () => {
-    setName('Style Test is done!')
-  }
-
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>{name}</Text>
-      <View style={styles.button}>
-        <Button title='Add' onPress={onClickHandler}></Button>
+      <View style={styles.view1}>
+        <Text style={styles.text}>1</Text>
+      </View>
+      <View style={styles.view2}>
+        <Text style={styles.text}>2</Text>
+      </View>
+      <View style={styles.view3}>
+        <Text style={styles.text}>3</Text>
       </View>
     </View>
   );
@@ -21,14 +20,29 @@ export default function App() {
 
 const styles = StyleSheet.create({
   container: {
-    width: '100%',
-    height: '50%',
+    flex: 1,
+    flexDirection: 'column',
     backgroundColor: '#000000',
-    alignItems: 'center',
+    alignItems: 'stretch',
     justifyContent: 'center',
-    borderWidth: 10,
-    borderColor: '#ff0000',
-    borderRadius: 25
+  },
+  view1: {
+    flex: 1,
+    backgroundColor: '#00ffff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  view2: {
+    flex: 1,
+    backgroundColor: '#ff00ff',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  view3: {
+    flex: 1,
+    backgroundColor: '#ffff00',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   text: {
     color: '#ffffff',
@@ -36,9 +50,5 @@ const styles = StyleSheet.create({
     fontStyle: 'italic',
     margin: 10,
     textTransform: 'uppercase'
-  },
-  button: {
-    width: 100,
-    height: 100
   }
 });
