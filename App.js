@@ -5,8 +5,8 @@ export default function App() {
 
   const DATA = [
     {
-      title:'Title ' + 1,
-      data: ['Item ' + 1 + '-1', 'Item ' + 1 + '-2']
+      title:'Title 1',
+      data: ['Item 1-1', 'Item 1-2']
     }
   ]
 
@@ -14,7 +14,7 @@ export default function App() {
 
   const onRefresh = () => {
     setRefreshing(true)
-    setItems([...Items, { name: 'Item14'}])
+    setItems([...DATA, { title: 'Title 2', data: ['Item 2-1', 'Item 2-2']}])
     setRefreshing(false)
   }
 
