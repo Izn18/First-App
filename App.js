@@ -3,25 +3,26 @@ import { StyleSheet, Text, View, ScrollView, RefreshControl, FlatList, SectionLi
 
 export default function App() {
 
-  const DATA = [
+  const [data, setData] = useState([
     {
       title:'Title 1',
       data: ['Item 1-1', 'Item 1-2']
     }
-  ]
+  ])
 
   const [Refreshing, setRefreshing] = useState(false)
 
   const onRefresh = () => {
     setRefreshing(true)
-    setItems([...DATA, { title: 'Title 2', data: ['Item 2-1', 'Item 2-2']}])
+    const adding_index = data.length + 1
+    setData([...data, { title: 'Title ' + adding_index, data: ['Item ' + adding_index + '-1', 'Item ' + adding_index + '-2'],}])
     setRefreshing(false)
   }
 
   return (
     <SectionList
       keyExtractor={(item, index) => index.toString()}
-      sections={DATA}
+      sections={data}
       renderItem={({item}) => (
         <View style={styles.section}>
           <Text style={styles.text}>{item}</Text>
