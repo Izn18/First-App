@@ -15,7 +15,7 @@ export default function App() {
   const onRefresh = () => {
     setRefreshing(true)
     const adding_index = data.length + 1
-    setData([...data, { title: 'Title ' + adding_index, data: ['Item ' + adding_index + '-1', 'Item ' + adding_index + '-2'],}])
+    setData([...data, { title: 'Title ' + adding_index, data: ['Item ' + adding_index + '-1', 'Item ' + adding_index + '-2']}])
     setRefreshing(false)
   }
 
