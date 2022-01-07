@@ -38,14 +38,6 @@ export default function App() {
     },
   ]
 
-  const [Refreshing, setRefreshing] = useState(false)
-
-  const onRefresh = () => {
-    setRefreshing(true)
-    setItems([...Items, { name: 'Item14'}])
-    setRefreshing(false)
-  }
-
   return (
     <SectionList
       keyExtractor={(item, index) => index.toString()}
