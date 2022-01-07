@@ -21,21 +21,9 @@ export default function App() {
 
   const DATA = [
     {
-      title:'Title 1',
-      data: ['Item 1-1', 'Item 1-2', 'Item 1-3']
-    },
-    {
-      title:'Title 2',
-      data: ['Item 2-1', 'Item 2-2', 'Item 2-3', 'Item 2-4']
-    },
-    {
-      title:'Title 3',
-      data: ['Item 3-1', 'Item 3-2', 'Item 3-3']
-    },
-    {
-      title:'Title 4',
-      data: ['Item 4-1', 'Item 4-2']
-    },
+      title:'Title ' + 1,
+      data: ['Item ' + 1 + '-1', 'Item ' + 1 + '-2']
+    }
   ]
 
   const [Refreshing, setRefreshing] = useState(false)
@@ -51,7 +39,7 @@ export default function App() {
       keyExtractor={(item, index) => index.toString()}
       sections={DATA}
       renderItem={({item}) => (
-        <View>
+        <View style={styles.section}>
           <Text style={styles.text}>{item}</Text>
         </View>
       )}
@@ -60,6 +48,13 @@ export default function App() {
           <Text style={styles.text}>{section.title}</Text>
         </View>
       )}
+      refreshControl={
+        <RefreshControl
+          refreshing={Refreshing}
+          onRefresh={onRefresh}
+          colors={['#ff00ff']}
+        />
+      }
     />
   );
 }
@@ -71,10 +66,18 @@ const styles = StyleSheet.create({
     backgroundColor: '#000000',
   },
   item: {
-    margin: 10,
     backgroundColor: '#00ff00',
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderWidth: 5,
+    borderColor: '#ff0000'
+  },
+  section: {
+    backgroundColor: '#ffffff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderBottomWidth: 2,
+    borderColor: '#ff0000'
   },
   text: {
     color: '#ffffff',
