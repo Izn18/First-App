@@ -13,14 +13,27 @@ import {
   Touchable,
   TouchableOpacity,
   Pressable,
+  Alert,
 } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 export default function App() {
   const [name, setName] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const onPressHandler = () => {
-    setSubmitted(!submitted);
+    if (name.length > 0) {
+      setSubmitted(!submitted);
+    } else {
+      Alert.alert(
+        "Warning",
+        "You have to type in something!",
+        [
+          { text: "Later", onPress: () => console.warn("Later Pressed!") },
+          { text: "Cancel", onPress: () => console.warn("Cancel Pressed!") },
+          { text: "OK", onPress: () => console.warn("OK Pressed!") },
+        ],
+        { cancelable: true, onDismiss: () => console.warn("Alert dismissed!") }
+      );
+    }
   };
 
   return (
@@ -32,26 +45,9 @@ export default function App() {
         onChangeText={(value) => setName(value)}
       />
 
-      {/*<Button
-        title={submitted ? "Clear" : "Submit"}
-        onPress={onPressHandler}
-        color="#00f"
-        //disabled={submitted}
-      />*/}
-
-      {/*<TouchableOpacity
-        // Auch möglich sind TouchableHighlight (mit underlayColor="#ffffff"), TouchableWithoutFeedback
-        style={styles.button}
-        onPress={onPressHandler}
-        //activeOpacity={0.8}
-      >
-        <Text style={styles.text}>{submitted ? "Clear" : "Submit"}</Text>
-      </TouchableOpacity>*/}
-
       <Pressable
-        onLongPress={onPressHandler}
+        onPress={onPressHandler}
         hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        delayLongPress={1000}
         android_ripple={{ color: "#f00ff0" }}
         style={({ pressed }) => [
           {
