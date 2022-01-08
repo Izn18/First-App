@@ -38,74 +38,72 @@ export default function App() {
         uri: "https://img.buzzfeed.com/buzzfeed-static/static/2018-04/13/12/asset/buzzfeed-prod-web-03/sub-buzz-8755-1523636113-1.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
       }}
     >
-      <SafeAreaView style={styles.container}>
-        <Modal
-          visible={showWarning}
-          transparent
-          onRequestClose={() => setShowWarning(false)}
-          animationType="fade"
-          //hardwareAccelerated -> nur für android
-        >
-          <View style={styles.centered_view}>
-            <View style={styles.warning_modal}>
-              <View style={styles.warning_title}>
-                <Text style={styles.text}>WARNING!</Text>
-              </View>
-              <View style={styles.warning_body}>
-                <Text style={styles.text}>
-                  The name must be longer than 0 characters.
-                </Text>
-              </View>
-              <Pressable
-                onPress={() => setShowWarning(false)}
-                style={styles.warning_button}
-                android_ripple={{ color: "#fff" }}
-              >
-                <Text style={styles.text}>OK</Text>
-              </Pressable>
+      <Modal
+        visible={showWarning}
+        transparent
+        onRequestClose={() => setShowWarning(false)}
+        animationType="fade"
+        //hardwareAccelerated -> nur für android
+      >
+        <View style={styles.centered_view}>
+          <View style={styles.warning_modal}>
+            <View style={styles.warning_title}>
+              <Text style={styles.text}>WARNING!</Text>
             </View>
+            <View style={styles.warning_body}>
+              <Text style={styles.text}>
+                The name must be longer than 0 characters.
+              </Text>
+            </View>
+            <Pressable
+              onPress={() => setShowWarning(false)}
+              style={styles.warning_button}
+              android_ripple={{ color: "#fff" }}
+            >
+              <Text style={styles.text}>OK</Text>
+            </Pressable>
           </View>
-        </Modal>
-        <Text style={styles.text}>Please write your name:</Text>
-        <TextInput
-          style={styles.input}
-          placeholder="e.g. John"
-          onChangeText={(value) => setName(value)}
-        />
+        </View>
+      </Modal>
+      <Text style={styles.text}>Please write your name:</Text>
+      <TextInput
+        style={styles.input}
+        placeholder="e.g. John"
+        onChangeText={(value) => setName(value)}
+      />
 
-        <Pressable
-          onPress={onPressHandler}
-          hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-          android_ripple={{ color: "#f00ff0" }}
-          style={({ pressed }) => [
-            {
-              backgroundColor: pressed ? "#0ff" : "#f00",
-            },
-            styles.pressable,
-          ]}
-        >
-          <Text style={styles.text}>{submitted ? "Clear" : "Submit"}</Text>
-        </Pressable>
+      <Pressable
+        onPress={onPressHandler}
+        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
+        android_ripple={{ color: "#f00ff0" }}
+        style={({ pressed }) => [
+          {
+            backgroundColor: pressed ? "#0ff" : "#f00",
+          },
+          styles.pressable,
+        ]}
+      >
+        <Text style={styles.text}>{submitted ? "Clear" : "Submit"}</Text>
+      </Pressable>
 
-        {submitted ? (
-          <View style={styles.container}>
-            <Text style={styles.text}>You are registered as {name}</Text>
-            <Image
-              style={styles.image}
-              source={require("./assets/done.png")}
-              resizeMode="stretch"
-            />
-          </View>
-        ) : (
+      {submitted ? (
+        <View style={styles.container}>
+          <Text style={styles.text}>You are registered as {name}</Text>
           <Image
             style={styles.image}
-            source={require("./assets/error.png")}
-            //source={{ uri: "www.picture.de/url" }}
+            source={require("./assets/done.png")}
             resizeMode="stretch"
-            //blurRadius={5}
           />
-        )}
-      </SafeAreaView>
+        </View>
+      ) : (
+        <Image
+          style={styles.image}
+          source={require("./assets/error.png")}
+          //source={{ uri: "www.picture.de/url" }}
+          resizeMode="stretch"
+          //blurRadius={5}
+        />
+      )}
     </ImageBackground>
   );
 }
