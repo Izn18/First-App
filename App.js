@@ -1,8 +1,7 @@
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
 
 export default function App() {
-
   return (
     <View style={styles.container}>
       <View style={styles.view1}>
@@ -21,34 +20,34 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#000000',
-    alignItems: 'stretch',
-    justifyContent: 'center',
+    flexDirection: "column",
+    backgroundColor: "#000000",
+    alignItems: "stretch",
+    justifyContent: "center",
   },
   view1: {
     flex: 1,
-    backgroundColor: '#00ffff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: "#00ffff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   view2: {
     flex: 1,
-    backgroundColor: '#ff00ff',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: "#ff00ff",
+    alignItems: "center",
+    justifyContent: "center",
   },
   view3: {
     flex: 1,
-    backgroundColor: '#ffff00',
-    alignItems: 'center',
-    justifyContent: 'center'
+    backgroundColor: "#ffff00",
+    alignItems: "center",
+    justifyContent: "center",
   },
   text: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 40,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     margin: 10,
-    textTransform: 'uppercase'
-  }
+    textTransform: "uppercase",
+  },
 });
