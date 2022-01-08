@@ -1,34 +1,47 @@
-import React, {useState} from 'react';
-import { StyleSheet, Text, View, ScrollView, RefreshControl, FlatList, SectionList } from 'react-native';
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+  SectionList,
+} from "react-native";
 
 export default function App() {
-
   const [data, setData] = useState([
     {
-      title:'Title 1',
-      data: ['Item 1-1', 'Item 1-2']
-    }
-  ])
+      title: "Title 1",
+      data: ["Item 1-1", "Item 1-2"],
+    },
+  ]);
 
-  const [Refreshing, setRefreshing] = useState(false)
+  const [Refreshing, setRefreshing] = useState(false);
 
   const onRefresh = () => {
-    setRefreshing(true)
-    const adding_index = data.length + 1
-    setData([...data, { title: 'Title ' + adding_index, data: ['Item ' + adding_index + '-1', 'Item ' + adding_index + '-2'],}])
-    setRefreshing(false)
-  }
+    setRefreshing(true);
+    const adding_index = data.length + 1;
+    setData([
+      ...data,
+      {
+        title: "Title " + adding_index,
+        data: ["Item " + adding_index + "-1", "Item " + adding_index + "-2"],
+      },
+    ]);
+    setRefreshing(false);
+  };
 
   return (
     <SectionList
       keyExtractor={(item, index) => index.toString()}
       sections={data}
-      renderItem={({item}) => (
+      renderItem={({ item }) => (
         <View style={styles.section}>
           <Text style={styles.text}>{item}</Text>
         </View>
       )}
-      renderSectionHeader={({section})=>(
+      renderSectionHeader={({ section }) => (
         <View style={styles.item}>
           <Text style={styles.text}>{section.title}</Text>
         </View>
@@ -37,7 +50,7 @@ export default function App() {
         <RefreshControl
           refreshing={Refreshing}
           onRefresh={onRefresh}
-          colors={['#ff00ff']}
+          colors={["#ff00ff"]}
         />
       }
     />
@@ -47,27 +60,27 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
-    backgroundColor: '#000000',
+    flexDirection: "column",
+    backgroundColor: "#000000",
   },
   item: {
-    backgroundColor: '#00ff00',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#00ff00",
+    alignItems: "center",
+    justifyContent: "center",
     borderWidth: 5,
-    borderColor: '#ff0000'
+    borderColor: "#ff0000",
   },
   section: {
-    backgroundColor: '#ffffff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: "#ffffff",
+    alignItems: "center",
+    justifyContent: "center",
     borderBottomWidth: 2,
-    borderColor: '#ff0000'
+    borderColor: "#ff0000",
   },
   text: {
-    color: '#ffffff',
+    color: "#ffffff",
     fontSize: 40,
-    fontStyle: 'italic',
+    fontStyle: "italic",
     margin: 10,
-  }
+  },
 });
