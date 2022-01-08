@@ -7,31 +7,28 @@ import {
   RefreshControl,
   FlatList,
   SectionList,
+  TextInput,
+  SafeAreaView,
 } from "react-native";
 
 export default function App() {
+  const [name, setName] = useState("");
+
   return (
-    <SectionList
-      keyExtractor={(item, index) => index.toString()}
-      sections={data}
-      renderItem={({ item }) => (
-        <View style={styles.section}>
-          <Text style={styles.text}>{item}</Text>
-        </View>
-      )}
-      renderSectionHeader={({ section }) => (
-        <View style={styles.item}>
-          <Text style={styles.text}>{section.title}</Text>
-        </View>
-      )}
-      refreshControl={
-        <RefreshControl
-          refreshing={Refreshing}
-          onRefresh={onRefresh}
-          colors={["#ff00ff"]}
-        />
-      }
-    />
+    <SafeAreaView style={styles.container}>
+      <Text style={styles.text}>Please write your name:</Text>
+      <TextInput
+        //multiline
+        //keyboardType="numeric"
+        //maxLength={2}
+        //editable={false}
+        //secureTextEntry
+        style={styles.input}
+        placeholder="e.g. John"
+        onChangeText={(value) => setName(value)}
+      />
+      <Text style={styles.text}>Your name is: {name}</Text>
+    </SafeAreaView>
   );
 }
 
@@ -40,25 +37,21 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     backgroundColor: "#000000",
-  },
-  item: {
-    backgroundColor: "#00ff00",
     alignItems: "center",
-    justifyContent: "center",
-    borderWidth: 5,
-    borderColor: "#ff0000",
-  },
-  section: {
-    backgroundColor: "#ffffff",
-    alignItems: "center",
-    justifyContent: "center",
-    borderBottomWidth: 2,
-    borderColor: "#ff0000",
+    paddingTop: Platform.OS === "android" ? 25 : 0,
   },
   text: {
     color: "#ffffff",
-    fontSize: 40,
+    fontSize: 20,
     fontStyle: "italic",
     margin: 10,
+  },
+  input: {
+    borderWidth: 2,
+    borderRadius: 5,
+    borderColor: "#ffffff",
+    width: "75%",
+    textAlign: "center",
+    fontSize: 20,
   },
 });
