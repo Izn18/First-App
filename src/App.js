@@ -1,188 +1,78 @@
-import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-  SectionList,
-  TextInput,
-  SafeAreaView,
-  Button,
-  Touchable,
-  TouchableOpacity,
-  Pressable,
-  Alert,
-  Modal,
-  Image,
-  ImageBackground,
-} from "react-native";
-import CustomButton from "./CustomButton";
-import Header from "./Header";
+import React from "react";
+import { StyleSheet, Text, View, Pressable } from "react-native";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-export default function App() {
-  const [name, setName] = useState("");
-  const [submitted, setSubmitted] = useState(false);
-  const [showWarning, setShowWarning] = useState(false);
+const Stack = createStackNavigator();
+
+function ScreenA({ navigation }) {
   const onPressHandler = () => {
-    if (name.length > 0) {
-      setSubmitted(!submitted);
-    } else {
-      setShowWarning(true);
-    }
+    navigation.navigate("Screen_B");
+    //navigation.replace("Screen_B");
   };
 
   return (
-    <ImageBackground
-      style={styles.container}
-      source={{
-        uri: "https://img.buzzfeed.com/buzzfeed-static/static/2018-04/13/12/asset/buzzfeed-prod-web-03/sub-buzz-8755-1523636113-1.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
-      }}
-    >
-      <Header />
-      <Modal
-        visible={showWarning}
-        transparent
-        onRequestClose={() => setShowWarning(false)}
-        animationType="fade"
-        //hardwareAccelerated -> nur für android
+    <View style={styles.body}>
+      <Text style={styles.text}>Screen A</Text>
+      <Pressable
+        onPress={onPressHandler}
+        style={({ pressed }) => ({
+          backgroundColor: pressed ? "#ddd" : "#00f",
+        })}
       >
-        <View style={styles.centered_view}>
-          <View style={styles.warning_modal}>
-            <View style={styles.warning_title}>
-              <Text style={styles.text}>WARNING!</Text>
-            </View>
-            <View style={styles.warning_body}>
-              <Text style={styles.text}>
-                The name must be longer than 0 characters.
-              </Text>
-            </View>
-            <Pressable
-              onPress={() => setShowWarning(false)}
-              style={styles.warning_button}
-              android_ripple={{ color: "#fff" }}
-            >
-              <Text style={styles.text}>OK</Text>
-            </Pressable>
-          </View>
-        </View>
-      </Modal>
-      <Text style={styles.text}>Please write your name:</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="e.g. John"
-        onChangeText={(value) => setName(value)}
-      />
+        <Text style={styles.text}>Go to Screen B!</Text>
+      </Pressable>
+    </View>
+  );
+}
 
-      <CustomButton
-        onPressFunction={onPressHandler}
-        title={submitted ? "Clear" : "Submit"}
-        color={"#f0f"}
-      />
+function ScreenB({ navigation }) {
+  const onPressHandler = () => {
+    //navigation.navigate("Screen_A");
+    navigation.goBack();
+  };
 
-      <CustomButton
-        onPressFunction={() => {}}
-        title={submitted ? "Clear" : "Submit"}
-        color={"#f00"}
-        style={{ margin: 10 }}
-      />
+  return (
+    <View style={styles.body}>
+      <Text style={styles.text}>Screen B</Text>
+      <Pressable
+        onPress={onPressHandler}
+        style={({ pressed }) => ({
+          backgroundColor: pressed ? "#ddd" : "#f00",
+        })}
+      >
+        <Text style={styles.text}>Go back to Screen A!</Text>
+      </Pressable>
+    </View>
+  );
+}
 
-      {submitted ? (
-        <View style={styles.container}>
-          <Text style={styles.text}>You are registered as {name}</Text>
-          <Image
-            style={styles.image}
-            source={require("../assets/done.png")}
-            resizeMode="stretch"
-          />
-        </View>
-      ) : (
-        <Image
-          style={styles.image}
-          source={require("../assets/error.png")}
-          //source={{ uri: "www.picture.de/url" }}
-          resizeMode="stretch"
-          //blurRadius={5}
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator
+      //screenOptions={{ header: () => null }}
+      >
+        <Stack.Screen
+          name="Screen_A"
+          component={ScreenA}
+          options={{ header: () => null }}
         />
-      )}
-    </ImageBackground>
+        <Stack.Screen name="Screen_B" component={ScreenB} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
 const styles = StyleSheet.create({
-  container: {
+  body: {
     flex: 1,
-    flexDirection: "column",
     alignItems: "center",
-    paddingTop: Platform.OS === "android" ? 40 : 0,
+    justifyContent: "center",
   },
   text: {
-    textAlign: "center",
-    color: "#ffffff",
-    fontSize: 20,
-    fontStyle: "italic",
-    margin: 10,
-  },
-  input: {
-    borderWidth: 2,
-    borderRadius: 5,
-    borderColor: "#ffffff",
-    width: "75%",
-    textAlign: "center",
-    fontSize: 20,
-    marginBottom: 15,
-  },
-  button: {
-    backgroundColor: "#00f",
-    borderRadius: 10,
-    width: 100,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  pressable: {
-    borderRadius: 10,
-    width: 100,
-    height: 50,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  centered_view: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#00000099",
-  },
-  warning_modal: {
-    width: 300,
-    height: 300,
-    backgroundColor: "#ffffff",
-    borderWidth: 1,
-    borderColor: "#000",
-    borderRadius: 20,
-  },
-  warning_title: {
-    height: 50,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#ff0",
-    borderTopRightRadius: 20,
-    borderTopLeftRadius: 20,
-  },
-  warning_body: {
-    height: 200,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  warning_button: {
-    backgroundColor: "#00ffff",
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-  },
-  image: {
-    width: 100,
-    height: 100,
+    fontSize: 30,
+    fontWeight: "bold",
     margin: 10,
   },
 });
