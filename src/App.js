@@ -18,6 +18,8 @@ import {
   Image,
   ImageBackground,
 } from "react-native";
+import CustomButton from "./CustomButton";
+import Header from "./Header";
 
 export default function App() {
   const [name, setName] = useState("");
@@ -38,6 +40,7 @@ export default function App() {
         uri: "https://img.buzzfeed.com/buzzfeed-static/static/2018-04/13/12/asset/buzzfeed-prod-web-03/sub-buzz-8755-1523636113-1.jpg?downsize=700%3A%2A&output-quality=auto&output-format=auto",
       }}
     >
+      <Header />
       <Modal
         visible={showWarning}
         transparent
@@ -72,33 +75,32 @@ export default function App() {
         onChangeText={(value) => setName(value)}
       />
 
-      <Pressable
-        onPress={onPressHandler}
-        hitSlop={{ top: 10, bottom: 10, left: 10, right: 10 }}
-        android_ripple={{ color: "#f00ff0" }}
-        style={({ pressed }) => [
-          {
-            backgroundColor: pressed ? "#0ff" : "#f00",
-          },
-          styles.pressable,
-        ]}
-      >
-        <Text style={styles.text}>{submitted ? "Clear" : "Submit"}</Text>
-      </Pressable>
+      <CustomButton
+        onPressFunction={onPressHandler}
+        title={submitted ? "Clear" : "Submit"}
+        color={"#f0f"}
+      />
+
+      <CustomButton
+        onPressFunction={() => {}}
+        title={submitted ? "Clear" : "Submit"}
+        color={"#f00"}
+        style={{ margin: 10 }}
+      />
 
       {submitted ? (
         <View style={styles.container}>
           <Text style={styles.text}>You are registered as {name}</Text>
           <Image
             style={styles.image}
-            source={require("./assets/done.png")}
+            source={require("../assets/done.png")}
             resizeMode="stretch"
           />
         </View>
       ) : (
         <Image
           style={styles.image}
-          source={require("./assets/error.png")}
+          source={require("../assets/error.png")}
           //source={{ uri: "www.picture.de/url" }}
           resizeMode="stretch"
           //blurRadius={5}
@@ -113,7 +115,7 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "column",
     alignItems: "center",
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+    paddingTop: Platform.OS === "android" ? 40 : 0,
   },
   text: {
     textAlign: "center",
