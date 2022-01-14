@@ -59,7 +59,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#000000",
+    backgroundColor: "#ffffff",
   },
   item: {
     margin: 10,
@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    color: "#ffffff",
+    color: "#000000",
     fontSize: 40,
     fontStyle: "italic",
     margin: 10,
