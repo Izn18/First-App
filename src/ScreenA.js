@@ -9,9 +9,13 @@ export default function ScreenA({ navigation, route }) {
     Dancing: require("../assets/Fonts/DancingScript-Regular.ttf"),
   });
 
+  {
+    /*
   if (!fontsLoaded) {
     return <AppLoading />;
+  }*/
   }
+
   const Users = [
     {
       id: 1,
