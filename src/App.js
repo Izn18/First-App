@@ -53,5 +53,6 @@ const styles = StyleSheet.create({
     width: "75%",
     textAlign: "center",
     fontSize: 20,
+    color: "#ffffff",
   },
 });
