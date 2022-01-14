@@ -1,14 +1,36 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import { useState } from "react/cjs/react.development";
 
 export default function ScreenA({ navigation, route }) {
+  const Users = [
+    {
+      id: 1,
+      name: "User A",
+    },
+    {
+      id: 2,
+      name: "User B",
+    },
+    {
+      id: 3,
+      name: "User C",
+    },
+  ];
+
+  const [name, setName] = useState("");
+
   const onPressHandler = () => {
     //navigation.toggleDrawer();
     //navigation.openDrawer();
     //navigation.closeDrawer();
     //navigation.navigate("Screen_B", {ItemName: "Item from Screen A",ItemId: 12,});
-    navigation.navigate("Screen_B");
+    //navigation.navigate("Screen_B");
     //navigation.replace("Screen_B");
+
+    for (let user of Users) {
+      setName(user.name);
+    }
   };
 
   return (
@@ -20,9 +42,9 @@ export default function ScreenA({ navigation, route }) {
           backgroundColor: pressed ? "#ddd" : "#999999",
         })}
       >
-        <Text style={styles.text}>Go to Screen B!</Text>
+        <Text style={styles.text}>Show last User!</Text>
       </Pressable>
-      <Text style={styles.text}>{route.params?.Message}</Text>
+      <Text style={styles.text}>{name}</Text>
     </View>
   );
 }
