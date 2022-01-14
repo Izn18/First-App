@@ -91,14 +91,14 @@ export default function App() {
           <Text style={styles.text}>You are registered as {name}</Text>
           <Image
             style={styles.image}
-            source={require("./assets/done.png")}
+            source={require("../assets/done.png")}
             resizeMode="stretch"
           />
         </View>
       ) : (
         <Image
           style={styles.image}
-          source={require("./assets/error.png")}
+          source={require("../assets/error.png")}
           //source={{ uri: "www.picture.de/url" }}
           resizeMode="stretch"
           //blurRadius={5}
