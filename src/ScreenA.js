@@ -16,7 +16,7 @@ export default function ScreenA({ navigation, route }) {
     medium: DancingScript_500Medium,
     DancingScript_600SemiBold,
     DancingScript_700Bold,
-    //"Dancing": require("./assets/Fonts/DancingScript-Bold.ttf"),
+    //"Dancing": require("./assets/fonts/DancingScript-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
