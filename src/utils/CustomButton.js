@@ -9,7 +9,7 @@ const CustomButton = (props) => {
       android_ripple={{ color: "#f00ff0" }}
       style={({ pressed }) => [
         {
-          backgroundColor: pressed ? "#0ff" : props.color,
+          backgroundColor: pressed ? "#ffffff" : props.color,
         },
         styles.pressable,
         { ...props.style },
@@ -34,6 +34,7 @@ const styles = StyleSheet.create({
     height: 50,
     alignItems: "center",
     justifyContent: "center",
+    margin: 10,
   },
 });
 
