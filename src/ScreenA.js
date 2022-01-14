@@ -1,11 +1,11 @@
 import React from "react";
-import { StyleSheet, Text, View, Pressable } from "react-native";
+import { StyleSheet, Text, View, Pressable, Font } from "react-native";
 import { useState } from "react/cjs/react.development";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
 export default function ScreenA({ navigation, route }) {
-  let [fontsLoaded, error] = useFonts({
+  let [loaded] = useFonts({
     Dancing: require("../assets/Fonts/DancingScript-Regular.ttf"),
   });
 
