@@ -1,5 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
+import GlobalStyle from "../utils/GlobalStyle";
 
 export default function ScreenB({ navigation, route }) {
   const { ItemName, ItemId } = route.params;
@@ -19,7 +20,7 @@ export default function ScreenB({ navigation, route }) {
           backgroundColor: pressed ? "#ddd" : "#f00",
         })}
       >
-        <Text style={styles.text}>Go back to Screen A!</Text>
+        <Text style={GlobalStyle.PressableText}>Go back to Screen A!</Text>
       </Pressable>
       <Text style={styles.text}>{ItemName}</Text>
       <Text style={styles.text}>ID: {ItemId}</Text>

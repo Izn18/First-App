@@ -6,8 +6,8 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
 import { createDrawerNavigator } from "@react-navigation/drawer";
-import ScreenA from "./ScreenA";
-import ScreenB from "./ScreenB";
+import ScreenA from "./screens/ScreenA";
+import ScreenB from "./screens/ScreenB";
 import { Ionicons } from "@expo/vector-icons";
 
 const Drawer = createDrawerNavigator();

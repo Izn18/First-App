@@ -1,6 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useState } from "react/cjs/react.development";
+import GlobalStyle from "../utils/GlobalStyle";
 
 export default function ScreenA({ navigation, route }) {
   const Users = [
@@ -42,7 +43,7 @@ export default function ScreenA({ navigation, route }) {
           backgroundColor: pressed ? "#ddd" : "#999999",
         })}
       >
-        <Text style={styles.text}>Show last User!</Text>
+        <Text style={GlobalStyle.PressableText}>Show last User!</Text>
       </Pressable>
       <Text style={styles.text}>{name}</Text>
     </View>
