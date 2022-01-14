@@ -3,7 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   RefreshControl,
+  FlatList,
   SectionList,
 } from "react-native";
 
