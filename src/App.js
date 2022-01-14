@@ -60,7 +60,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   text: {
-    color: "#ffffff",
+    color: "#000000",
     fontSize: 40,
     fontStyle: "italic",
     margin: 10,
