@@ -1,22 +1,14 @@
 import React from "react";
 import { StyleSheet, Text, View, Pressable } from "react-native";
 import { useState } from "react/cjs/react.development";
-import {
-  DancingScript_400Regular,
-  DancingScript_500Medium,
-  DancingScript_600SemiBold,
-  DancingScript_700Bold,
-} from "@expo-google-fonts/dancing-script";
 import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
 export default function ScreenA({ navigation, route }) {
+  let Dancing = "Dancing";
+
   let [fontsLoaded, error] = useFonts({
-    regular: DancingScript_400Regular,
-    medium: DancingScript_500Medium,
-    DancingScript_600SemiBold,
-    DancingScript_700Bold,
-    //"Dancing": require("./assets/Fonts/DancingScript-Bold.ttf"),
+    Dancing: require("../assets/Fonts/DancingScript-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -78,6 +70,6 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 30,
     margin: 10,
-    fontFamily: "regular",
+    fontFamily: "Dancing",
   },
 });
