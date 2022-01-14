@@ -1,5 +1,13 @@
-import React from "react";
-import { StyleSheet, Text, View, SectionList } from "react-native";
+import React, { useState } from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  RefreshControl,
+  FlatList,
+  SectionList,
+} from "react-native";
 
 export default function App() {
   const DATA = [
