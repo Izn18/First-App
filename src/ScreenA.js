@@ -5,13 +5,16 @@ import { useFonts } from "expo-font";
 import AppLoading from "expo-app-loading";
 
 export default function ScreenA({ navigation, route }) {
+  let Dancing = "Dancing";
+
   let [fontsLoaded, error] = useFonts({
-    Dancing: require("../assets/Fonts/DancingScript-Regular.ttf"),
+    Dancing: require("../assets/Fonts/DancingScript-Bold.ttf"),
   });
 
   if (!fontsLoaded) {
     return <AppLoading />;
   }
+
   const Users = [
     {
       id: 1,
