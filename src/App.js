@@ -3,18 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-  SectionList,
   TextInput,
   SafeAreaView,
-  Button,
-  Touchable,
-  TouchableOpacity,
   Pressable,
-  Alert,
   Modal,
+  Platform,
 } from "react-native";
 
 export default function App() {
@@ -135,7 +128,7 @@ const styles = StyleSheet.create({
   warning_modal: {
     width: 300,
     height: 300,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#00ff",
     borderWidth: 1,
     borderColor: "#000",
     borderRadius: 20,
