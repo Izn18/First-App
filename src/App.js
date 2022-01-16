@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
   },
   view6: {
     flex: 1,
-    backgroundColor: "#ffffff",
+    backgroundColor: "#000000",
     alignItems: "center",
     justifyContent: "center",
   },
