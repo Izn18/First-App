@@ -3,20 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-  SectionList,
   TextInput,
-  SafeAreaView,
-  Button,
-  Touchable,
-  TouchableOpacity,
   Pressable,
-  Alert,
   Modal,
   Image,
   ImageBackground,
+  Platform,
 } from "react-native";
 
 export default function App() {
@@ -130,6 +122,7 @@ const styles = StyleSheet.create({
     textAlign: "center",
     fontSize: 20,
     marginBottom: 15,
+    color: "#ffffff",
   },
   button: {
     backgroundColor: "#00f",
@@ -150,7 +143,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "#00000099",
+    backgroundColor: "#000000",
   },
   warning_modal: {
     width: 300,
