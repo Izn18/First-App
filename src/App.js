@@ -61,7 +61,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     flexDirection: "column",
-    backgroundColor: "#000000",
+    backgroundColor: "#ffffff",
   },
   item: {
     backgroundColor: "#00ff00",
@@ -78,7 +78,7 @@ const styles = StyleSheet.create({
     borderColor: "#ff0000",
   },
   text: {
-    color: "#ffffff",
+    color: "#000000",
     fontSize: 40,
     fontStyle: "italic",
     margin: 10,
