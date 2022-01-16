@@ -8,8 +8,9 @@ import {
   Touchable,
   TouchableOpacity,
   Pressable,
+  Platform,
 } from "react-native";
-import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+//import { backgroundColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 export default function App() {
   const [name, setName] = useState("");
@@ -71,7 +72,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#000000",
     alignItems: "center",
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+    ...Platform.select({
+      ios: {},
+      android: {
+        paddingTop: 25,
+      },
+      default: {},
+    }),
   },
   text: {
     color: "#ffffff",
