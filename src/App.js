@@ -2,18 +2,11 @@ import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
-  View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-  SectionList,
   TextInput,
   SafeAreaView,
-  Button,
-  Touchable,
-  TouchableOpacity,
   Pressable,
   Alert,
+  Platform,
 } from "react-native";
 
 export default function App() {
@@ -72,7 +65,13 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     backgroundColor: "#000000",
     alignItems: "center",
-    paddingTop: Platform.OS === "android" ? 25 : 0,
+    ...Platform.select({
+      ios: {},
+      android: {
+        paddingTop: 25,
+      },
+      default: {},
+    }),
   },
   text: {
     color: "#ffffff",
