@@ -3,20 +3,12 @@ import {
   StyleSheet,
   Text,
   View,
-  ScrollView,
-  RefreshControl,
-  FlatList,
-  SectionList,
   TextInput,
-  SafeAreaView,
-  Button,
-  Touchable,
-  TouchableOpacity,
   Pressable,
-  Alert,
   Modal,
   Image,
   ImageBackground,
+  Platform,
 } from "react-native";
 import CustomButton from "./CustomButton";
 import Header from "./Header";

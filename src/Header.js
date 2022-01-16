@@ -1,6 +1,6 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
-import { borderLeftColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
+//import { borderLeftColor } from "react-native/Libraries/Components/View/ReactNativeStyleAttributes";
 
 const Header = () => {
   return (
