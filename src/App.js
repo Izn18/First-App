@@ -27,7 +27,7 @@ export default function App() {
       <Modal
         visible={showWarning}
         transparent
-        onRequestClose={() => SetshowWarning(false)}
+        onRequestClose={() => setShowWarning(false)}
         animationType="fade"
         //hardwareAccelerated -> nur für android
       >
